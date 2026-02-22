@@ -22,7 +22,7 @@ import "../navbar.css";
   const handleSearch = (e :React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (searchTerm.trim()) {
+    if (searchTerm) {
       router.push(`/search?q=${searchTerm}&pageNumber=${1}&sort=default`);
     }
   };
