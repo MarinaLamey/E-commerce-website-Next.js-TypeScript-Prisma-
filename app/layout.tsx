@@ -14,6 +14,7 @@ import Footer from "@/componant/Footer/Footer";
 
  export const getRoboto = Roboto({
   variable: "--font-get-robert",
+  weight:["400" , "500" , "700" , "900"],
   subsets: ["latin"],
 });
 
