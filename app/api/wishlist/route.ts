@@ -6,7 +6,7 @@ import { WISHLIST_PER_PAGE } from '@/utils/constants';
 
 /**
  *  @method  POST
- *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/wishlist
+ *  @route   ~/api/wishlist
  *  @desc    add to wishlist
  *  @access  private  //only user (logIn)
  */
@@ -57,7 +57,7 @@ export async function POST(request:NextRequest) {
 
 /**
  * @method  GET
- * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/wishlist
+ * @route   ~/api/wishlist
  * @desc    get user cart with items
  * @access  private (Registered users)
  */

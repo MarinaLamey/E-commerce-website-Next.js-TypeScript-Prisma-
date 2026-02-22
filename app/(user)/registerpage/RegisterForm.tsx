@@ -31,10 +31,10 @@ export const RegisterForm = () => {
 
         try {
             setLoading(true);
-            await axios.post(`http://localhost:3000/api/user/register`, { 
+            await axios.post(`/api/user/register`, { 
                 firstName, lastName, email, password, confirmPassword, phone 
             });
-            router.replace('http://localhost:3000/');
+            router.replace('/');
             setLoading(false);
             router.refresh();
         } catch (error: any) {

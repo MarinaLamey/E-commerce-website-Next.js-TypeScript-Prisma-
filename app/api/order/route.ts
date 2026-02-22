@@ -5,7 +5,7 @@
 
     /**
      *  @method  POST
-     *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/order
+     *  @route   ~/api/order
      *  @desc    add orders 
      *  @access  private  (Registered users)
      */
@@ -133,7 +133,7 @@ export async function POST(request: NextRequest) {
 
     /**
      * @method  GET
-     * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/order
+     * @route  ~/api/order
      * @desc    get orders
      * @access  private (Registered users)
      */

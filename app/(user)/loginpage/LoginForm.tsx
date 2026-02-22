@@ -20,8 +20,8 @@ function LoginForm() {
 
         try {
             setLoading(true);
-            await axios.post(`http://localhost:3000/api/user/login`, { email, password });
-            router.replace('http://localhost:3000/');
+            await axios.post(`/api/user/login`, { email, password });
+            router.replace('/');
             setLoading(false);
             router.refresh();
         } catch (error: any) {

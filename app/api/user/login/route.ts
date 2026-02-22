@@ -8,7 +8,7 @@ import bcrypt from "bcryptjs";
 
 /**
  *  @method  POST
- *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/login
+ *  @route   ~/api/user/login
  *  @desc    Login User [(Log In) (Sign In)]
  *  @access  public
  */

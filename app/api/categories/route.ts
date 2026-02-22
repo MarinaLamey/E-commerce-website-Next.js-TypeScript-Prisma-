@@ -8,7 +8,7 @@
 
     /**
      *  @method  POST
-     *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories
+     *  @route ~/api/categories
      *  @desc    Create New category
      *  @access  private (only admin can add category)
      */
@@ -46,7 +46,7 @@
 
     /**
      *  @method  GET
-     *  @route  http://localhost:3000/api/categories
+     *  @route  ~/api/categories
      *  @desc    Get categories By Page Number
      *  @access  public
      */

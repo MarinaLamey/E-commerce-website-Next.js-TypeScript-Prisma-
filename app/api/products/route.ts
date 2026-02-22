@@ -7,7 +7,7 @@ import { productSchema } from "@/utils/validationSchema";
 import { PRODUCT_PER_PAGE } from "@/utils/constants";
 /**
  *  @method  POST
- *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/products
+ *  @route ~/api/products
  *  @desc    Create New product
  *  @access  private (only admin can add product)
  */
@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
 
 /**
  *  @method  GET
- *  @route  http://localhost:3000/api/products
+ *  @route  ~/api/products
  *  @desc    Get categories By Page Number
  *  @access  public
  */

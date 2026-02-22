@@ -8,7 +8,7 @@ import { setCookie } from "@/utils/generateToken";
 
 /**
  *  @method  POST
- *  @route https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/register
+ *  @route ~/api/user/register
  *  @desc    Create New User [(Register) (Sign Up) ]
  *  @access  public
  */

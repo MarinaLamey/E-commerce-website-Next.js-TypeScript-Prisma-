@@ -125,7 +125,7 @@ export async function GET( request: NextRequest,
 
 /**
  *  @method  PUT
- *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/:id
+ *  @route  ~/api/user/profile/:id
  *  @desc    Update Profile
  *  @access  private (only user himself can update his account/profile)
  */

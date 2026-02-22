@@ -9,7 +9,7 @@ import { revalidatePath, revalidateTag } from 'next/cache';
 
 /**
  *  @method  GET
- *  @route https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories/:id
+ *  @route ~/api/categories/:id
  *  @desc    Get cagetory products By Page Number
  *  @access  public
  */
@@ -74,7 +74,7 @@ const pageNumber =
 
   /**
  *  @method  PUT
- *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories/:id
+ *  @route ~/api/categories/:id
  *  @desc    update category by id
  *  @access  private //only admin can update category
  */
@@ -120,7 +120,7 @@ const pageNumber =
 
     /**
  *  @method  DELETE
- *  @route https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories/:id
+ *  @route ~/api/categories/:id
  *  @desc    DELETE category by id
  *  @access  private //only admin can DELETE category
  */

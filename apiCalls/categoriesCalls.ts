@@ -13,7 +13,7 @@ interface GetCategoryProps{
      categoryProductCount:number;
 }
  export async function getCategories(pageNumber:string | undefined): Promise<CategoriesList>{
-    const response = await fetch(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories?pageNumber=${pageNumber}`)
+    const response = await fetch(`/api/categories?pageNumber=${pageNumber}`)
    
     if(!response.ok){
         throw new Error("Faild to fetch Categories")
@@ -23,7 +23,7 @@ return response.json();
 
 //get categories count 
  export async function getCategoriesCount(): Promise<number>{
-    const response = await fetch(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories/count`)
+    const response = await fetch(`/api/categories/count`)
     if(!response.ok){
         throw new Error("Faild to fetch Categories")
     }

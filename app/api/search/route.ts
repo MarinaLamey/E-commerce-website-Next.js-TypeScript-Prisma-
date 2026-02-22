@@ -6,7 +6,7 @@ import { PRODUCT_PER_PAGE } from '@/utils/constants';
 
 /**
  *  @method  GET
- *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/search
+ *  @route  ~/api/search
  *  @desc    Get Search products 
  *  @access  public
  */

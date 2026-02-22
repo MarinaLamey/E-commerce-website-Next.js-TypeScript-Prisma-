@@ -5,7 +5,7 @@ import { NextRequest , NextResponse } from "next/server";
 
 /**
  *  @method  GET
- *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/categories/count
+ *  @route  ~/api/categories/count
  *  @desc    Get categories count
  *  @access  public
  */

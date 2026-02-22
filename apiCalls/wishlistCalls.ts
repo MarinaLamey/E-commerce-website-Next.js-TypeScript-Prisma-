@@ -17,7 +17,7 @@ export type WishListResponse = {
 
 //Add to wishlist API fuction 
 export const addToWishlist = async(productId : number , userId : number) : Promise<AddToWishListResponse> => {
-const response = await axios.post(`http://localhost:3000/api/wishlist` , {
+const response = await axios.post(`/api/wishlist` , {
     productId ,
     userId
 })
@@ -28,7 +28,7 @@ return response.data;
 //Get all wishlist Items 
 export const getWishListallItems = async(pageNumber : string) : Promise<WishListResponse> => {
 try{
- const response = await axios.get(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/wishlist?pageNumber=${pageNumber}`)
+ const response = await axios.get(`/api/wishlist?pageNumber=${pageNumber}`)
  return response.data
 }catch(error:any){
     
@@ -39,7 +39,7 @@ try{
 //get wishlist count 
 export const getWishListCount = async() : Promise<number> => {
 try{
- const response = await axios.get(`http://localhost:3000/api/wishlist/count`)
+ const response = await axios.get(`/api/wishlist/count`)
  return response.data
 }catch(error:any) {
 throw "faild to get wishlist count"
