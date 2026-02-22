@@ -6,7 +6,7 @@ export type OrderItemWithProduct = OrderItem & {
 };
 
 export type FullOrder = Order & {
-  user: Pick<User, "firstName" | "lastName" | "email" | "phone">; // بناخد بس اللي محتاجينه من اليوزر
+  user: Pick<User, "firstName" | "lastName" | "email" | "phone">;
   items: OrderItemWithProduct[];
 };
 interface AdminOrderState {
