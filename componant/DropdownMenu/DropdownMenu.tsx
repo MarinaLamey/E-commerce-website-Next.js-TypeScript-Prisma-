@@ -34,7 +34,7 @@ const DropdownMenu = () => {
   const logoutFunction = async() => {
     try{
       resetCart()
-         await axios.get(`http://localhost:3000/api/user/logout`)
+         await axios.get(`/api/user/logout`)
          router.push("/loginpage");
           router.refresh()
         
