@@ -12,7 +12,7 @@ export type TCategory = {
   return (
     
     <>
-        <Link href={`http://localhost:3000/categories/${id}`}>
+        <Link href={`/categories/${id}`}>
                <div  className=' w-full  h-full flex flex-col items-center justify-center '>
                 <div className=' relative mx-auto  rounded-full  flex items-center justify-center bg-neutral-200 w-62.5 h-62.5 '>
                <div className='relative w-50 h-50  ' >
