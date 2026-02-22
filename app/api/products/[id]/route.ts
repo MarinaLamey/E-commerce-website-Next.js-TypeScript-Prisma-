@@ -6,7 +6,7 @@ import { UpdateProductDto } from "@/utils/dtos";
 
 /**
  *  @method  GET
- *  @route  http://localhost:3000/api/products/:id
+ *  @route https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/products/:id
  *  @desc    Get  product By id
  *  @access  public
  */
@@ -54,7 +54,7 @@ export async function GET(
 
   /**
  *  @method  PUT
- *  @route  http://localhost:3000/api/products/:id
+ *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/products/:id
  *  @desc    update product
  *  @access  private //only admin can update product
  */
@@ -114,7 +114,7 @@ export async function GET(
 
     /**
  *  @method  DELETE
- *  @route  http://localhost:3000/api/products/:id
+ *  @route https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/products/:id
  *  @desc    update product
  *  @access  private //only admin can delete product
  */

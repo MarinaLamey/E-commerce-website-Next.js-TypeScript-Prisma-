@@ -47,8 +47,6 @@ addItem: async (productId: number, qty: number) => {
         set({ isLoading: true });
         await addToCartApi(productId, qty);
         
-        // الاحترافية هنا: بدلاً من التلاعب بـ state.items يدوياً
-        // أعد استدعاء loadCart لضمان أن البيانات قادمة كاملة من قاعدة البيانات
         const data: CartResponse = await getCartItems();
         set({ 
             items: data.items || [], 
@@ -70,7 +68,6 @@ addItem: async (productId: number, qty: number) => {
  }, updateQuantity: async (itemId: number, productId: number, newQty: number) => {
     const previousItems = get().items;
     
-    // 1. Optimistic Update (تحديث الواجهة فوراً)
     set({
       items: previousItems.map(item =>
         item.id === itemId ? { ...item, quantity: newQty } : item
@@ -121,7 +118,7 @@ addItem: async (productId: number, qty: number) => {
     set((state) => ({
       items: state.items.map((product) => {
         if (stockMap[product.id] !== undefined) {
-          return { ...product, stock: stockMap[product.id] }; // نحدث الـ stock فقط
+          return { ...product, stock: stockMap[product.id] }; 
         }
         return product; 
       }),

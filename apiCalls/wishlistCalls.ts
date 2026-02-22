@@ -28,7 +28,7 @@ return response.data;
 //Get all wishlist Items 
 export const getWishListallItems = async(pageNumber : string) : Promise<WishListResponse> => {
 try{
- const response = await axios.get(`http://localhost:3000/api/wishlist?pageNumber=${pageNumber}`)
+ const response = await axios.get(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/wishlist?pageNumber=${pageNumber}`)
  return response.data
 }catch(error:any){
     

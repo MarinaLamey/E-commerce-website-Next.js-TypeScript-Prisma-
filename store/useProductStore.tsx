@@ -103,13 +103,13 @@ if (sortKey === "asc") {
     set((state) => ({
       bestsellerProducts: state.bestsellerProducts.map((product) => {
         if (stockMap[product.id] !== undefined) {
-          return { ...product, stock: stockMap[product.id] }; // نحدث الـ stock فقط
+          return { ...product, stock: stockMap[product.id] }; 
         } 
         return product; 
       }),
       offersProducts: state.offersProducts.map((product) => {
         if (stockMap[product.id] !== undefined) {
-          return { ...product, stock: stockMap[product.id] }; // نحدث الـ stock فقط
+          return { ...product, stock: stockMap[product.id] }; 
         } 
         return product; 
       }),

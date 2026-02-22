@@ -8,7 +8,7 @@ interface Props {
 
 /**
  * @method  DELETE
- * @route   http://localhost:3000/api/cart/[id]
+ * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/cart/[id]
  * @desc    Delete specific item from cart
  */
 export async function DELETE(request: NextRequest ,{ params }: { params: Promise<{ id: string }> }) {
@@ -50,7 +50,7 @@ export async function DELETE(request: NextRequest ,{ params }: { params: Promise
 
 /**
  * @method  PATCH
- * @route   http://localhost:3000/api/cart/[id]
+ * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/cart/[id]
  * @desc    Delete specific item from cart
  */
 

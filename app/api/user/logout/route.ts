@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 
 /**
  *  @method  GET
- *  @route   http://localhost:3000/api/user/logout
+ *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/logout
  *  @desc    Logout User
  *  @access  public
  */

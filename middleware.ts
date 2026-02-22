@@ -12,15 +12,13 @@ export async function middleware(request: NextRequest) {
         );
     }
 
-    // 2. لو فيه توكن وبيحاول يدخل الـ Login أو الـ Register
     if (token && (pathname === "/loginpage" || pathname === "/registerpage")) {
         return NextResponse.redirect(new URL("/", request.url));
     }
 
-    return NextResponse.next(); // كمل الـ request عادي لو مفيش شروط انطبقت
+    return NextResponse.next(); 
 }
 
-// تعديل الـ Matcher ليكون أشمل
 export const config = {
     matcher: [
         '/api/users/profile/:path*',

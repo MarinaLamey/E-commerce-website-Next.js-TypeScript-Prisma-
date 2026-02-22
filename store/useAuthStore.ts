@@ -46,7 +46,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   updateProfile: async (id, updatedData) => {
     set({ isLoading: true });
     try {
-      const res = await fetch(`/api/user/profile/${id}`, {
+      const res = await fetch(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(updatedData),
@@ -72,7 +72,7 @@ export const useAuthStore = create<AuthState>((set, get) => ({
 
     set({ isLoading: true });
     try {
-      const res = await fetch(`/api/user/profile/${id}`, {
+      const res = await fetch(`https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/${id}`, {
         method: "DELETE",
       });
 
@@ -84,11 +84,10 @@ export const useAuthStore = create<AuthState>((set, get) => ({
       set({ user: null, isLoading: false });
       toast.warn("Account deleted. Hope to see you again!");
       
-      // توجيه المستخدم لصفحة تسجيل الدخول أو الهوم
       window.location.href = "/";
     } catch (error: any) {
       set({ isLoading: false });
-      toast.error(`الكود غلط يا جموسه`);
+      toast.error(`Faild`);
     }
   },
 

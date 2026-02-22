@@ -1,14 +1,12 @@
 import { create } from "zustand";
 import { Category, Product } from "@/app/generated/prisma";
 
-// تعريف شكل البيانات القادمة من الـ API
 interface CategoriesList {
   allCategories: Category[];
   newCategory: Category[];
 }
 
 interface CategoriesState {
-  // الأجزاء الأساسية من الـ State
   catgories: Category[];
   allCategories: Category[];
   categoryProducts: Product[];
@@ -77,7 +75,7 @@ if (sortKey === "asc") {
     set((state) => ({
       categoryProducts: state.categoryProducts.map((product) => {
         if (stockMap[product.id] !== undefined) {
-          return { ...product, stock: stockMap[product.id] }; // نحدث الـ stock فقط
+          return { ...product, stock: stockMap[product.id] }; 
         }
         return product; 
       }),
@@ -93,6 +91,5 @@ if (sortKey === "asc") {
     }),
 }));
 
-// Selector احترافي لاستخراج الأسماء فقط (لتحسين الأداء ومنع الـ Re-renders غير الضرورية)
 export const selectCategoryNames = (state: CategoriesState) =>
   state.catgories.map((category) => category.name);

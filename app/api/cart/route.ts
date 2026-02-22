@@ -6,7 +6,7 @@ import prisma from "@/lib/db";
 
 /**
  * @method  POST
- * @route   http://localhost:3000/api/cart
+ * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/cart
  * @desc    add to cart or update quantity
  * @access  private
  */
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
 
 /**
  * @method  GET
- * @route   http://localhost:3000/api/cart
+ * @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/cart
  * @desc    get user cart with items
  * @access  private (Registered users)
  */

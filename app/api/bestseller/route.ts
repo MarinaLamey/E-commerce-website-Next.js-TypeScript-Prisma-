@@ -6,7 +6,7 @@ import { PRODUCT_PER_PAGE } from "@/utils/constants";
 
 /**
  *  @method  GET
- *  @route  http://localhost:3000/api/bestseller
+ *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/bestseller
  *  @desc    Get best seller
  *  @access  public
  */

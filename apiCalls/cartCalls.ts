@@ -23,7 +23,7 @@ export const addToCartApi = async (productId: number, quantity: number  ): Promi
 
 export const getCartItems = async() : Promise<CartResponse> => {
   try{
-   const response = await axios.get(`http://localhost:3000/api/cart`)
+   const response = await axios.get(`/api/cart`)
    return response.data
   }catch(error:any){
     throw  "Failed to fetch cart";
@@ -32,7 +32,7 @@ export const getCartItems = async() : Promise<CartResponse> => {
 
 export const deleteCartItem = async(id:number) => {
   try{
-   const response = await axios.delete(`http://localhost:3000/api/cart/${id}`)
+   const response = await axios.delete(`/api/cart/${id}`)
    return response.data
   }catch(error:any){
      throw  "Failed to Delete cartItem";

@@ -7,7 +7,7 @@ import { cookies } from "next/headers";
 import bcrypt from "bcryptjs";
 /**
  *  @method  DELETE
- *  @route   http://localhost:3000/api/user/profile/:id
+ *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/:id
  *  @desc    Delete Profile
  *  @access  private (only user himself can delete his account)
  */
@@ -80,7 +80,7 @@ export async function DELETE(
 
 /**
  *  @method  GET
- *  @route   http://localhost:3000/api/user/profile/:id
+ *  @route   https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/:id
  *  @desc    Get Profile By Id
  *  @access  private (only user himself can get his account/profile)
  */
@@ -125,7 +125,7 @@ export async function GET( request: NextRequest,
 
 /**
  *  @method  PUT
- *  @route   http://localhost:3000/api/user/profile/:id
+ *  @route  https://e-commerce-website-next-js-type-scr-liard.vercel.app/api/user/profile/:id
  *  @desc    Update Profile
  *  @access  private (only user himself can update his account/profile)
  */
