@@ -1,0 +1,20 @@
+.catshadow{
+    animation: 2s linear 0.5s infinite alternate shadowanim;
+}
+
+@keyframes  shadowanim{
+    from{
+        box-shadow:0 2px 40px rgba(255 , 0 , 0 , 0.4);  
+    }
+    to{
+        box-shadow:0 0px 0px rgba(255 , 0 , 0 , 0.6);
+    }
+}
+
+.slick-dots li.slick-active button:before{
+    
+    color:#771011 !important;
+}
+.slick-dots li button:before{
+    font-size:20px;
+}

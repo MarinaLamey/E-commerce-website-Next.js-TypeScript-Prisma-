@@ -1,0 +1,51 @@
+.basketContainer {
+
+    cursor: pointer;
+  
+    align-items: center;
+  }
+  
+
+.basketQuantity {
+    background-color: white;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid;
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    font-size: 12px;
+    z-index:10;
+  }
+  
+
+  .pumpCartQuantity {
+    animation: pumping 300ms ease-out;
+  }
+  
+  @keyframes pumping {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(0.8);
+    }
+    30% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.7);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .cartnoanimation{
+    transform: scale(1);
+  }

@@ -1,0 +1,90 @@
+
+/* 1. احجز مساحة السلايدر مقدماً */
+.slider-container {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    overflow: hidden;
+}
+
+.swiper-slide {
+    display: flex;
+    height: auto;
+}
+
+@media (min-width: 1024px) {
+    .slider-container {
+        aspect-ratio: 2 / 1; 
+    }
+}
+
+
+.slick-prev:before, .slick-next:before{
+    color:#771011 !important;
+    font-size:40px !important;
+}
+
+.bgColor{
+ background: rgba(255, 182, 182, 0.01);
+background: linear-gradient(188deg,rgba(255, 182, 182, 0.88) 30%, rgba(250, 182, 182, 0.66) 64%, rgba(119, 16, 17, 0.89) 100%, rgba(255, 0, 4, 1) 14%);
+}
+.imgholder{ 
+ position:relative;
+
+}
+.imgstyle {
+  position: relative;
+  border-radius: 20px; 
+  will-change: box-shadow;
+  animation: shadowanim 2s linear infinite alternate;
+}
+.imgstyle img {
+    object-fit: cover;
+    max-width: 100% !important;
+    max-height: 100% !important;
+}
+@keyframes shadowanim {
+  from {
+    box-shadow: 0px 0px 20px 12px rgba(0, 0, 0, 0.392)
+
+  }
+  to {
+   box-shadow: 0px 0px 20px 12px rgba(0,0,0,0.24);
+
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+ font-size:20px;
+font-weight:bold;
+text-shadow: -8px 2px 6px rgba(169,9,9,1);
+  color: black !important; /* slate-900 */
+}
+
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px  !important;
+  background: rgba(0, 0, 0, 0.3)  !important;
+  opacity: 1  !important;
+  border-radius: 9999px  !important;
+  transition: all 0.3s ease;
+  margin: 0 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  width: 24px;
+  background: linear-gradient(135deg, #ef4444, #991b1b) !important ; 
+  box-shadow: 0 4px 10px rgba(153, 27, 27, 0.4) !important;
+}
+
+.swiper-pagination-bullet:hover {
+  transform: scale(1.2);
+  background: rgba(0,0,0,0.6);
+}
+
+
+
+
+

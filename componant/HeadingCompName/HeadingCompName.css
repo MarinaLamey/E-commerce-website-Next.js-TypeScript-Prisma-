@@ -1,0 +1,167 @@
+/* From Uiverse.io by Danishrehman786 */ 
+.cyber-btn {
+  position: relative;
+  background: transparent;
+  color: #771011;
+  border: none;
+  padding: 8px 25px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-shadow: 0 0 8px #771011;
+  margin: 0px;
+}
+
+.cyber-btn:hover {
+  text-shadow: 0 0 12px #c90609;
+  letter-spacing: 3px;
+}
+
+.cyber-btn::before,
+.cyber-btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  background: #c90609;
+  box-shadow: 0 0 5px #c90609;
+  transition: all 0.3s;
+}
+
+.cyber-btn::before {
+  top: 0;
+  left: 0;
+}
+
+.cyber-btn::after {
+  bottom: 0;
+  right: 0;
+}
+
+.cyber-btn:hover::before,
+.cyber-btn:hover::after {
+  width: 100%;
+}
+
+.cyber-tooltip {
+  position: absolute;
+  width: 220px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(206, 0, 0, 0.95);
+  border: 1px solid #c90609;
+  color: #000000;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.5;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+  box-shadow: 0 0 30px #771011;
+  text-shadow: 0 0 8px #c90609;
+  z-index: 10;
+
+  clip-path: polygon(
+    0% 20%,
+    10% 0%,
+    90% 0%,
+    100% 20%,
+    100% 80%,
+    90% 100%,
+    10% 100%,
+    0% 80%
+  );
+
+  background-image: linear-gradient(#771011 1px, transparent 1px),
+    linear-gradient(90deg, #771011 1px, transparent 1px);
+  background-size: 20px 20px;
+
+  bottom: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cyber-btn:hover + .cyber-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.cyber-tooltip::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #771011, transparent);
+  box-shadow: 0 0 10px #b1070a;
+  animation: scan 2s infinite;
+}
+
+.cyber-tooltip .corner-tl {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #771011;
+  box-shadow: 0 0 5px #b1070a;
+  border-right: none;
+  border-bottom: none;
+}
+
+.cyber-tooltip .corner-tr {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #771011;
+  box-shadow: 0 0 5px #b1070a;
+  border-left: none;
+  border-bottom: none;
+}
+
+.cyber-tooltip .corner-bl {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #771011;
+  box-shadow: 0 0 5px #b1070a;
+  border-right: none;
+  border-top: none;
+}
+
+.cyber-tooltip .corner-br {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 10px;
+  height: 10px;
+  border: 1px solid #771011;
+  box-shadow: 0 0 5px #b1070a;
+  border-left: none;
+  border-top: none;
+}

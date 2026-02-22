@@ -1,0 +1,32 @@
+/* benefitssection.css */
+
+.conStyle {
+  display: flex;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  /* لمسة احترافية: بتخلي العناصر تختفي وتظهر بنعومة من الجوانب */
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.benifitAnimation {
+  display: flex;
+  width: max-content; /* مهم جداً عشان الحاوية متصغرش العناصر */
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* بنحرك العرض الكامل للنسخة الأولى */
+    transform: translateX(-100%);
+  }
+}
+
+/* توقيف الحركة عند الوقوف بالماوس لسهولة القراءة */
+.conStyle:hover .benifitAnimation {
+  animation-play-state: paused;
+}

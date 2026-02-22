@@ -1,0 +1,24 @@
+
+.imageholder{
+    top:354px;
+    animation: 10s linear 2s infinite topchange;
+
+}
+
+@keyframes  topchange{
+0%{
+    top:200px;
+}
+25%{
+    top:0px;
+}
+50%{
+    top:-200px;
+}
+75%{
+    top:-400px;
+}
+100%{
+    top:200px;
+}
+}

@@ -1,0 +1,5 @@
+
+.bgColor{
+ background: rgba(255, 182, 182, 0.01);
+background: linear-gradient(188deg,rgba(255, 182, 182, 0.88) 30%, rgba(250, 182, 182, 0.66) 64%, rgba(119, 16, 17, 0.89) 100%, rgba(255, 0, 4, 1) 14%);
+}

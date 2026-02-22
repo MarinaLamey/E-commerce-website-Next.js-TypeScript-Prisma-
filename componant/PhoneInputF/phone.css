@@ -1,0 +1,27 @@
+
+.phone{
+    border: none !important;
+    outline: none !important;
+    width: 100%;
+}
+
+.phone input{
+   border: none !important;
+   border: 5px solid white;
+
+   padding: 20px;
+    
+}
+
+.phone .container {
+      border-radius: 20px;
+  
+ border: 5px solid white;
+  border-radius: 5px;
+}
+
+  .phone input:hover {
+    border:none !important ;
+    outline: none;
+ }
+
