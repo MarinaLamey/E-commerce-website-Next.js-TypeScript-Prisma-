@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 
 export const getSearchResult = async(pageNumber: number | undefined, searchText: string | undefined , sort: string | undefined): Promise<SearchProps> => {
     try{
-            const response = await axios.get(`https://e-commerce-website-next-js-type-script-prisma-ch89-93kfzbi62.vercel.app/api/search?q=${searchText}&pageNumber=${pageNumber}&sort=${sort || "default"}`);
+            const response = await axios.get(`/api/search?q=${searchText}&pageNumber=${pageNumber}&sort=${sort || "default"}`);
     return  response.data
     }catch(error:any){
       toast.error(`Faild`)
