@@ -24,10 +24,10 @@ import p2 from "../../assets/imgs/p2.png"
 import p3 from "../../assets/imgs/p3.png"
 
 export const Offers = [
-    {imgSrc:"/imgs/HomeOffers.jpg" , to:`/Offers?category=3`},
-    {imgSrc:"/imgs/BeautyOffers.jpg", to:`/Offers?category=4`},
+    {imgSrc:"/imgs/HomeOffers.jpg" , to:`/Offers?category=6`},
+    {imgSrc:"/imgs/BeautyOffers.jpg", to:`/Offers?category=5`},
     {imgSrc:"/imgs/FashionOffers.jpg", to:`/Offers?category=2`},
-     {imgSrc:"/imgs/SportsOffers.jpg", to:`/Offers?category=5`}
+     {imgSrc:"/imgs/SportsOffers.jpg", to:`/Offers?category=11`}
 ]
 
  export const heroSectionImgs = [

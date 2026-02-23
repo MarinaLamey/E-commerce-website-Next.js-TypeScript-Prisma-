@@ -59,9 +59,10 @@ addItemtoWishlist: async(productId , userId) => {
         const newLoadingItems = { ...state.loadingItems };
         delete newLoadingItems[productId]; 
         return { loadingItems: newLoadingItems };
+        
       });
             }
-            toast.success("Item Add To WishList")
+            toast.success("Update  WishList")
         }
     catch(error:any){
     toast.error(error?.response?.data.message)
