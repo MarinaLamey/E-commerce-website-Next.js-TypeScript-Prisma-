@@ -10,7 +10,10 @@ import { OffersSection } from "@/componant/HomepComponant/OffersSection/OffersSe
 import { AdSection } from "@/componant/HomepComponant/AdSection/AdSection";
 import { OffersPhotosSection } from "@/componant/HomepComponant/OffersPhotosSection/OffersPhotosSection";
 import { getBestellerProduct } from "@/apiCalls/productCalls";
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 export default async function Home () {
+  
     const cookieStore = await cookies();
     const token = cookieStore.get("jwtToken")?.value || "";
     const userData = verifyTokenForPage(token);
