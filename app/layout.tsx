@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { getAllCategories } from "@/apiCalls/categoriesCalls";
 import { Navbar } from "@/componant/Navbar/Navbar";
 import Footer from "@/componant/Footer/Footer";
-
+export const dynamic = 'force-dynamic';
  export const getOswald = Oswald
 ({
   variable: "--font-get-oswald",
