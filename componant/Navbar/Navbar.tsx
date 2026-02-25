@@ -99,7 +99,7 @@ export async function Navbar({initialCategories} : NavbarProp) {
           className="  mt-2 w-fit  md:w-fit flex items-center flex-row justify-between gap-4 relative  "
           style={{ height: "69px" }}
         >
-          {!userData ? (
+          {!userData?.id ? (
             <div className="relative ">
               <LucideShoppingBag
                 color="black"
@@ -114,7 +114,7 @@ export async function Navbar({initialCategories} : NavbarProp) {
           <SearchBar />
         </div>
         <div className="flex flex-row items-center justify-between gap-1.5">
-          {userData ? (
+          {userData?.id ? (
             <>
               <p className="hidden md:flex font">Hello {userData.firstName}</p>
               <DropdownMenu />

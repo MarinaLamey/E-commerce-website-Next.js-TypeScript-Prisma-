@@ -5,6 +5,7 @@ import AdminDashboardWrapper from "@/componant/admin/AdminDashboardWrapper/Admin
 
 type SearchParams = Promise<{ [key: string]: string | undefined }>;
 
+
 async function AdminDashboardPage(props: { searchParams: SearchParams }) {
   const { pageNumber } = await props.searchParams;
   
