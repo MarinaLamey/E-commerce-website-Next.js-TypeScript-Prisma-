@@ -1,6 +1,7 @@
 🚀 N-NEGMCARTILLA | Enterprise-Grade E-Commerce Engine
 High-Performance | Scalable Architecture | Financial Precision
 This project is not merely a UI; it is a production-ready e-commerce engine engineered with a focus on data integrity, atomic transactions, and ultra-fast rendering. Built using the latest Next.js 15 (App Router) and PostgreSQL, it demonstrates a deep understanding of modern full-stack architecture.
+Live Demo :https://e-commerce-website-next-js-type-script-prisma-tr9e-ebd1ip250.vercel.app/
 ________________________________________
 🏗️ Technical Architecture & Engineering Excellence
 1. Advanced Data Layer & Rendering Strategy
