@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { Product } from "@/app/generated/prisma";
 import { toast } from "react-toastify";
-import { revalidateProductTags } from "@/app/actions/revalidateActions";
+
 
 interface AdminProductState {
   products: Product[];
@@ -46,7 +46,8 @@ export const useAdminProductStore = create<AdminProductState>((set, get) => ({
       }
       
       set((state) => ({ products: [data, ...state.products] }));
-      await revalidateProductTags(data.categoryId);
+    
+      
 
       toast.success("Product created successfully! 🚀");
       return true;

@@ -2,8 +2,8 @@ import { verifyTokenForPage } from "@/utils/verifyToken";
 import { cookies } from "next/headers";
 import { getCategoryProducts } from "@/apiCalls/productCalls";
 import CategoryProductsClient from "@/componant/CategoryProductsClient/CategoryProductsClient";
-
-
+import { CategoryProductsDataType } from "@/type/productTyping";
+import { ProductType } from "@/type/productTyping";
 type Props = {
   params: Promise<{ id: string }>; 
   searchParams: Promise<{ pageNumber?: string }>;
@@ -22,7 +22,13 @@ async function CategoryProductsPage({ params, searchParams }: Props) {
   const userData = verifyTokenForPage(token);
 
 
-const initialData = await getCategoryProducts(Number(id) , Number(pageNumber));
+const data  = await getCategoryProducts(Number(id) , Number(pageNumber) );
+
+const initialData: CategoryProductsDataType = data ?? {
+    products: [] as ProductType[],
+    categoryName: "Unknown",
+    productsCount: 0
+};
   return (
     <div className="w-full min-h-screen relative mx-auto mb-5">
   <CategoryProductsClient 

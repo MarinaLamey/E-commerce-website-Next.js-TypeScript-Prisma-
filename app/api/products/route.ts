@@ -1,6 +1,7 @@
 
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
+import { redis } from "@/lib/redis/redis";
 import { verifyToken } from "@/utils/verifyToken";
 import { productDto } from './../../../utils/dtos';
 import { productSchema } from "@/utils/validationSchema";
@@ -39,8 +40,26 @@ export async function POST(request: NextRequest) {
             isBestseller:body.isBestseller
         }
     })
-            return NextResponse.json(newProduct , {status:201})
+    const patterns = [
+            `category:${body.categoryId}:*`,
+            "products:bestseller:*",
+            "products:allOffers:*",
+            "products:offers:*"
+        ];
 
+        const keysToClear = await Promise.all(
+            patterns.map(pattern => redis.keys(pattern))
+        );
+
+        const finalKeys = keysToClear.flat();
+
+        if (finalKeys.length > 0) {
+            await redis.del(...finalKeys);
+            console.log(`🧹 Cache cleared: ${finalKeys.length} keys removed.`);
+        }
+
+            return NextResponse.json(newProduct , {status:201})
+    
     } catch (error) {
         return NextResponse.json(
             { message: 'internal server error' },

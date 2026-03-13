@@ -1,4 +1,5 @@
-import { Prisma } from "@/app/generated/prisma";
+import { Category, Prisma } from "@/app/generated/prisma";
+import { Product } from "@/app/generated/prisma";
 export interface RegisterUserDto {
     firstName: string;
     lastName: string;
@@ -66,3 +67,24 @@ export type OrderWithDeepItems = Prisma.OrderGetPayload<{
     }
   }
 }>;
+
+
+export interface TrendingProduct {
+    id:number
+  name:string;
+    imgSrc:string;
+    description:string;
+    price:number;
+    stock:number;
+    categoryId:number;
+    isOffer:boolean;
+    isBestseller:boolean;
+  views: number;   
+
+}
+
+
+export interface CartListType  {
+  pageNumber: string | undefined;
+  data:Category
+}

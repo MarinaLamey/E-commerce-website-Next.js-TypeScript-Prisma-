@@ -2,14 +2,10 @@
 
 import { motion, AnimatePresence , Variants } from "framer-motion";
 import { CATEGORY_PER_PAGE } from "@/utils/constants";
-import { useCategoriesStore } from "@/store/useCategoriesStore";
 import CategoryItem from "../category/CategoryItem";
 import Pagination from "../pagination/Pagination";
 import { memo } from "react";
-
-type CartListType = {
-  pageNumber: string | undefined;
-}
+import { CategoryListType } from "@/type/categoryTyping";
 
 const rightToLeftVariants : Variants = {
   hidden: { 
@@ -27,17 +23,16 @@ const rightToLeftVariants : Variants = {
   }),
 };
 
-export const CategoriesList = memo(({ pageNumber }: CartListType) => {
-  const catgories = useCategoriesStore((state) => state.catgories);
-  const categoryCount = useCategoriesStore(state => state.categoryCount);
-  const pages = Math.ceil(categoryCount / CATEGORY_PER_PAGE);
+export const CategoriesList = memo(({ pageNumber  , data }: CategoryListType) => {
+  
+  const pages = Math.ceil( data?.categoriesCount || 0 / CATEGORY_PER_PAGE);
 
   return (
     <div className='w-full flex flex-col items-center justify-between gap-3'>
       {/* Container الـ Grid */}
       <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
         <AnimatePresence mode="popLayout"> 
-          {catgories.map((item, index) => (
+          {data.categories.map((item, index) => (
             <motion.div
               key={`${pageNumber}-${item.id}`}
               variants={rightToLeftVariants}

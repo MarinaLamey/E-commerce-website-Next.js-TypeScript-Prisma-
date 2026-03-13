@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/db";
 import { PRODUCT_PER_PAGE } from "@/utils/constants";
-
+import { getBestellerProduct } from "@/apiCalls/productCalls";
 
 
 /**
@@ -10,26 +10,17 @@ import { PRODUCT_PER_PAGE } from "@/utils/constants";
  *  @desc    Get best seller
  *  @access  public
  */
-export async function GET(request: NextRequest) {
-    try {
-     const pageNumber = request.nextUrl.searchParams.get("pageNumber") || "1";
+// app/api/products/bestseller/route.ts
 
-    const products = await prisma.product.findMany({
-     where:{ isBestseller : true},
-      skip: PRODUCT_PER_PAGE * (parseInt(pageNumber) - 1),
-      take: PRODUCT_PER_PAGE,
-      orderBy: { createdAt: 'desc' }
-    });
-   const ProductsCount = await prisma.product.count({
-    where:{isBestseller:true}
-   })
-   
-    return NextResponse.json({products , ProductsCount} ,{ status: 200 });
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const page = Number(searchParams.get("pageNumber")) || 1;
+  const sort = searchParams.get("sort") || "default";
 
-    } catch (error) {
-        return NextResponse.json(
-            { message: 'internal server error' },
-            { status: 500 }
-        );
-    }
+  try {
+    const data = await getBestellerProduct(page, sort);
+    return NextResponse.json(JSON.parse(JSON.stringify(data)));
+  } catch (error) {
+    return NextResponse.json({ error: "Server Error" }, { status: 500 });
+  }
 }

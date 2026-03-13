@@ -2,7 +2,6 @@
 import { create } from "zustand";
 import { User } from "@/app/generated/prisma";
 import { toast } from "react-toastify";
-import { useCartStore } from "./useCartStore";
 
 
 interface AuthState {
@@ -94,7 +93,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
   Logout: async() => {
   set({ user: null });
   await fetch(`api/user/logout`);
-  useCartStore.getState().resetCart(); 
   window.location.href = "/login";
 },
 

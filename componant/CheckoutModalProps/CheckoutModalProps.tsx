@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useOrderStore } from '@/store/useOrdersStore';
-import { useCartStore } from '@/store/useCartStore';
+import { useCart } from '@/hooks/cart/useCart'; 
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 interface CheckoutModalProps {
@@ -13,7 +13,7 @@ interface CheckoutModalProps {
 export default function CheckoutModal({ isOpen, onClose }: CheckoutModalProps) {
   const router = useRouter();
   const { createOrder, loading } = useOrderStore();
- const clear = useCartStore((state) => state.clearAllCaches);
+  const {clearCart} = useCart();
 
   const [formData, setFormData] = useState({
     City: 'Cairo',
@@ -32,8 +32,7 @@ const handleSubmit = async (e: React.FormEvent) => {
       toast.success("Order Placed Successfully!");
       
       
-      useCartStore.getState().clearAllCaches() 
-      clear()
+   clearCart()
       onClose();
       
       router.replace("/profile/orders?pageNumber=1");

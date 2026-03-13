@@ -1,7 +1,7 @@
-import { unstable_cache } from 'next/cache';
 import prisma from '@/lib/db';
+import { Prisma } from '@/app/generated/prisma';
+import { redis } from "@/lib/redis/redis";
 import { Category } from "@/app/generated/prisma";
-import { Product } from "@/app/generated/prisma";
 import { PRODUCT_PER_PAGE } from '@/utils/constants';
 interface CategoriesList {
     allCategories: Category[];
@@ -9,9 +9,10 @@ interface CategoriesList {
 }
 
 interface GetCategoryProps{
-    products:Product[];
-     categoryProductCount:number;
+    categories:Category[];
+    categoriesCount:number;
 }
+
  export async function getCategories(pageNumber:string | undefined): Promise<CategoriesList>{
     const response = await fetch(`/api/categories?pageNumber=${pageNumber}`)
    
@@ -36,34 +37,33 @@ return count
 
 
 
-export const getAllCategories = async (pageNumber: number | undefined) => {
-    const fetcher = unstable_cache(
-        async () => {
+export const getAllCategories = async (pageNumber: number | undefined ) => {
+      const currentPage = Math.max(1, Number(pageNumber) || 1);
+    const cacheKey = `Categories:page:${currentPage}`;
+
+ 
             try {
-                const currentPage = Math.max(1, Number(pageNumber) || 1);
+                //ask Redis first 
+                      const cached = await redis.get<GetCategoryProps>(cacheKey);
+                      if (cached) return cached;
+                      // hydration stop func
+                      //ifRedis empty ask prisma
                 const skip = PRODUCT_PER_PAGE * (currentPage - 1);
 
                 const [categories, categoriesCount] = await Promise.all([
                     prisma.category.findMany({
                         skip: skip,
                         take: PRODUCT_PER_PAGE,
-                        orderBy: { name: 'asc' } 
+                     orderBy: { createdAt: 'desc' }
                     }),
                     prisma.category.count()
                 ]);
-
-                return { categories, categoriesCount };
+                const result = { categories, categoriesCount };
+                  await redis.set(cacheKey, result, { ex: 14400 });
+                  return result;
+        
             } catch (error: any) {
                 console.error("All Categories Fetch Error:", error);
                 throw new Error("Failed to get categories");
             }
-        },
-        [`all-categories-pg-${pageNumber}`],
-        {
-            revalidate: 9000,
-            tags: ["categories"] 
         }
-    );
-
-    return fetcher();
-};

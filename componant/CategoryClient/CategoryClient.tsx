@@ -1,20 +1,11 @@
 "use client"
+import { useAllCategories } from "@/hooks/categories/useAllCategories";
 import { CategoriesList } from "../CartItemList/CategoriesList"
-import { useEffect, memo } from "react";
-import { useCategoriesStore } from "@/store/useCategoriesStore";
-export const CategoryClient = ({pageNumber , initialData}:any) => {
-     const hydrateCategoryList = useCategoriesStore((state) => state.hydrateCategoryList);
-     const clear = useCategoriesStore((state) => state.clearAllCaches);
-     
-       useEffect(() => {
-         if (initialData) {
-           hydrateCategoryList(initialData.categories , initialData.categoriesCount);
-         }
-         return () => clear();
-       }, [initialData, hydrateCategoryList, clear]);
-     
+import { CategoryClientType } from "@/type/categoryTyping";
+export const CategoryClient = ({pageNumber , initialData}:CategoryClientType) => {
+   const { data } = useAllCategories(pageNumber, initialData);
   return (
    
-      <CategoriesList pageNumber={pageNumber} />
+      <CategoriesList pageNumber={pageNumber} data={data}/>
   )
 }

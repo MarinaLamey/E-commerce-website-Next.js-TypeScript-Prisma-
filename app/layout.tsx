@@ -3,6 +3,7 @@ import { Oswald, Roboto } from "next/font/google";
 import "./globals.css";
 import { ToastContainer, toast } from 'react-toastify';
 import { getAllCategories } from "@/apiCalls/categoriesCalls";
+import Providers from "@/componant/useQueryClient/Providers";
 import { Navbar } from "@/componant/Navbar/Navbar";
 import Footer from "@/componant/Footer/Footer";
 export const dynamic = 'force-dynamic';
@@ -29,7 +30,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  
   const allCategories = await getAllCategories(1);
   return (
     <html lang="en"  className={`${getOswald.variable} ${getRoboto.variable} `}>
@@ -37,9 +37,13 @@ export default async function RootLayout({
       <body
         className={` antialiased `}
       >
+          <Providers>
         <Navbar initialCategories={allCategories.categories}/>
-        {children}
+      
+          {children}
+         
       <Footer/>
+       </Providers>
           <ToastContainer />
       </body>
       

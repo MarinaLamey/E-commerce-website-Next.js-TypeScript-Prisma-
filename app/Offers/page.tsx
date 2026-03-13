@@ -23,7 +23,7 @@ async function Offers  ({ searchParams }:PageProps ) {
         
        >
         
-         <OffersProductClient userFName={userData?.firstName} UserId={Number(userData?.id)} initialData={initialData} pageNumber={Number(pageNumber)} route={"/Offers"} />
+         <OffersProductClient userFName={userData?.firstName} UserId={Number(userData?.id)} initialData={initialData} category={Number(category)} pageNumber={Number(pageNumber)} route={"/Offers"} />
        </div>
   )
 }

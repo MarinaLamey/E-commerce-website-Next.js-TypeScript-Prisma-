@@ -1,45 +1,30 @@
 "use client";
+
 import { useState, useEffect } from "react"; 
-import { useCartStore } from "@/store/useCartStore";
 import LottieHandler from "@/componant/feedback/LottieHandler";
 import Cartpageitem from "@/componant/cartpageitem/cartpageitem";
 import CartSubtotal from "@/componant/Cart/CartSubtotal/CartSubtotal";
 import CheckoutModal from "@/componant/CheckoutModalProps/CheckoutModalProps";
-
+import { useCart } from "@/hooks/cart/useCart";
 
 function Cartpage() {
   
-  const items = useCartStore((state) => state.items);
+  const {cart , isLoading} = useCart()
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
-  useEffect(() => {
-    const refreshStock = async () => {
-         try {
-           const productIds = items.map((p: any) => p.id).join(',');
-           const response = await fetch(`/api/products/stock-check?ids=${productIds}`);
-           const stockMap = await response.json();
-           // update stock 
-           useCartStore.getState().updateStockOnly(stockMap);
-         } catch (error) {
-           console.error("Failed to sync stock:", error);
-         }
-       };
-   
-       refreshStock();
-     
-  },[])
-
+  
+if (isLoading) return  <LottieHandler type={"Loading"} message={"Loading..."} />;
 
   return (
     <div className="w-full flex flex-col relative p-4" style={{ minHeight: "700px" }}>
       <h3 className="text-4xl self-start font-['Oswald'] font-bold p-2 mb-6">Your Cart</h3>
       
       <div className="w-full flex flex-col gap-4 relative">
-        {items.length > 0 ? (
+        {cart?.items?.length && cart.items.length > 0 ? (
           <>
             <div className="flex flex-col gap-3">
              
-              {items.map((item) => (
-                <Cartpageitem key={item.productId} item={item} />
+              {cart?.items.map((item) => (
+                <Cartpageitem key={item.productId} item={item} />   
               ))}
             </div>
 

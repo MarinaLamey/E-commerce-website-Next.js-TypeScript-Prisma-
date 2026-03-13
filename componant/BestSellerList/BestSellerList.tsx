@@ -6,9 +6,11 @@ import LottieHandler from '../feedback/LottieHandler'
 import { useProductStore } from "@/store/useProductStore"
 import Pagination from "../pagination/Pagination";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import { BestSellerResponse } from "@/apiCalls/productCalls";
 interface BestSelletProps {
     pageNumber: number | undefined;
     userId: number | undefined;
+    data:BestSellerResponse;
 }
 
 const cardVariants: Variants ={
@@ -29,10 +31,9 @@ const cardVariants: Variants ={
     }),
 };
 
-export const BestSellerList = memo(({ pageNumber, userId }: BestSelletProps) => {
-    const product = useProductStore((state) => state.bestsellerProducts);
-    const count = useProductStore((state) => state.bestsellerCount);
-    const pages = Math.ceil(count / PRODUCT_PER_PAGE);
+export const BestSellerList = memo(({ pageNumber, userId , data }: BestSelletProps) => {
+    
+    const pages = Math.ceil(data.ProductsCount / PRODUCT_PER_PAGE);
 
     return (
       
@@ -41,8 +42,8 @@ export const BestSellerList = memo(({ pageNumber, userId }: BestSelletProps) => 
          
             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-6 md:gap-x-6 md:gap-y-10'>
                 <AnimatePresence mode="wait">
-                    {product.length > 0 ? (
-                        product.map((item, index) => (
+                    {data.products.length > 0 ? (
+                        data.products.map((item, index) => (
                             <motion.div
                                 key={`${pageNumber}-${item.id}`}
                                 variants={cardVariants}
@@ -66,7 +67,7 @@ export const BestSellerList = memo(({ pageNumber, userId }: BestSelletProps) => 
                 />
             </div>
             
-            {product.length === 0 && (
+            {data.products.length === 0 && (
                 <div className="w-full flex flex-col justify-center items-center py-20">
                     <LottieHandler type={'Empty'} message={`Stay tuned! Best sellers are coming soon.`} />
                 </div>

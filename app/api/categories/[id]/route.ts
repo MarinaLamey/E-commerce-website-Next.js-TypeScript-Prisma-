@@ -5,73 +5,26 @@ import { verifyToken } from "@/utils/verifyToken";
 import { categorySchema } from "@/utils/validationSchema";
 import { PRODUCT_PER_PAGE } from "@/utils/constants";
 import { UpdateCategoryDto } from "@/utils/dtos";
-import { revalidatePath, revalidateTag } from 'next/cache';
-
+import { getCategoryProducts } from "@/apiCalls/productCalls";
 /**
  *  @method  GET
  *  @route ~/api/categories/:id
  *  @desc    Get cagetory products By Page Number
  *  @access  public
  */
+export async function GET(request: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const { searchParams } = new URL(request.url);
+  const page = Number(searchParams.get("pageNumber")) || 1;
+  const sort = searchParams.get("sort") || "default";
 
-export async function GET(
-  request: NextRequest,
- { params }: { params: Promise<{ id: string }> }
-  ) {
-  try{
-      // 🔹 unwrap params
-
-   const  {id}  = await params;
-const pageNumber =
-  Number(request.nextUrl.searchParams.get("pageNumber")) || 1;
-
-    const category = await prisma.category.findUnique({
-        where:{id:Number(id)},
-        select:{
-            id:true,
-            name:true,
-            imgSrc:true
-        }
-    })
-      if (!category) {
-    return NextResponse.json(
-      { message: "Category not found" },
-      { status: 404 }
-    );
+  try {
+    const data = await getCategoryProducts(Number(id), page, sort);
+return NextResponse.json(data);
+  } catch (error) {
+    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
   }
-  const [products, totalProducts] = await Promise.all([
-    prisma.product.findMany({
-      where: {
-        categoryId: category.id,
-      },
-  skip:PRODUCT_PER_PAGE * (Number(pageNumber) -1),
-  take:PRODUCT_PER_PAGE
-    }),
-
-    prisma.product.count({
-      where: {
-        categoryId: category.id,
-      },
-    })
-  ]);
-  const categoryProductCount = await prisma.product.count({
-      where: {
-        categoryId: category.id,
-      },
-    })
-  return NextResponse.json({
-  products , 
-  categoryProductCount
-} , {status:200});
-
-  }catch(error){
-    return NextResponse.json( { message: "internal server error" },
-      { status: 500 })
-  }
-
-  }
-
-
+}
   /**
  *  @method  PUT
  *  @route ~/api/categories/:id

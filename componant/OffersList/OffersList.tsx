@@ -7,11 +7,12 @@ import { memo, useEffect } from "react";
 import Pagination from "../pagination/Pagination";
 import { PRODUCT_PER_PAGE } from "@/utils/constants";
 import { useProductStore } from "@/store/useProductStore";
-
+import { OffersResponse } from "@/type/productTyping";
 interface OffersProps {
     userId: number | undefined;
     route: string;
     pageNumber: number;
+    data:OffersResponse;
 }
 
 const offerVariants: Variants = {
@@ -30,11 +31,9 @@ const offerVariants: Variants = {
     }),
 };
 
-export const OffersList =({ userId, pageNumber, route }: OffersProps) => {
-    const myProducts = useProductStore((state) => state.offersProducts);
-    const clear = useProductStore((state) => state.clearAllCaches);
-    const count = useProductStore((state) => state.offerCount);
-    const pages = Math.ceil(count / PRODUCT_PER_PAGE);
+export const OffersList =({ userId, pageNumber, route , data }: OffersProps) => {
+    
+    const pages = Math.ceil(data.productOffersCount / PRODUCT_PER_PAGE);
     
 
     return (
@@ -43,8 +42,8 @@ export const OffersList =({ userId, pageNumber, route }: OffersProps) => {
            
             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-8 md:gap-x-6 md:gap-y-12'>
                 <AnimatePresence mode="wait">
-                    {myProducts.length > 0 ? (
-                        myProducts.map((product, index) => (
+                    {data.products.length > 0 ? (
+                        data.products.map((product, index) => (
                             <motion.div
                                 key={`${pageNumber}-${product.id}`}
                                 variants={offerVariants}
@@ -70,7 +69,7 @@ export const OffersList =({ userId, pageNumber, route }: OffersProps) => {
             </div>
 
             {/* Empty State Section */}
-            {myProducts.length === 0 && (
+            {data.products.length === 0 && (
                 <div className="w-full py-20 flex flex-col items-center justify-center">
                     <LottieHandler 
                         type={'Empty'} 

@@ -5,7 +5,6 @@ import profilePic from "../../public/imgs/Negma.jpeg";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useCartStore } from "@/store/useCartStore";
 
 const menu =[
   {name: "Profile" , to:"/ProfilePage"},
@@ -18,7 +17,6 @@ const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
  
- const resetCart = useCartStore((state) => state.resetCart)
 
   const handleItemClick = (item: typeof menu[0]) => {
     setIsOpen(false);
@@ -33,7 +31,6 @@ const DropdownMenu = () => {
 
   const logoutFunction = async() => {
     try{
-      resetCart()
          await axios.get(`/api/user/logout`)
          router.push("/loginpage");
           router.refresh()

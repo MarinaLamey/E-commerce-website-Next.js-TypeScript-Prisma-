@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { memo } from "react";
-import { Product } from "@/app/generated/prisma";
+import { ProductType } from "@/type/productTyping";
 import Image from "next/image";
-import { useCartStore } from "@/store/useCartStore";
-import AddToCartButton from "./addTocartButton"; // تأكدي من تسمية الملف والـ import
+import AddToCartButton from "./addTocartButton"; 
+import { useCart } from "@/hooks/cart/useCart";
 import { ArrowUpRight } from "lucide-react";
 import "./cart.css";
 import { useWishlistStore } from "@/store/useWishlistStore";
@@ -15,25 +15,24 @@ import { toast } from "react-toastify";
 
 interface CartProps {
     user:number | undefined;
-  item: Product ;
+  item: ProductType ;
   
 }
 
 function Cart({ item , user }: CartProps) {
-
+ const {cart} = useCart()
 
   const wishListitems = useWishlistStore((state) => state.wishListitems);
     const isLoading = useWishlistStore((state) => state.loadingItems[item.id]);
       const addItemtoWishlist = useWishlistStore((state) => state.addItemtoWishlist);
 
 
-  const currentItem = useCartStore((state) =>
-    state.items.find((i) => i.productId === item.id)
-  );
+
   
   const maxLimit = Number(item.stock);
 
-  const currentQty = currentItem?.quantity || 0;
+const currentItemInCart = cart?.items?.find((i: any) => i.productId === item.id);
+const currentQty = currentItemInCart?.quantity || 0;
   const quantityReachedToMax = currentQty >= maxLimit;
   const currentRemainingQuantity = maxLimit - currentQty;
 
@@ -117,10 +116,8 @@ const isLike = wishListitems.some(items => items.productId  === item.id );
 
         <AddToCartButton
           item={item}
-          currentQty={currentQty}
-          maxLimit={maxLimit}
-          currentRemainingQuantity={currentRemainingQuantity}
           quantityReachedToMax={quantityReachedToMax}
+          currentRemainingQuantity={currentRemainingQuantity}
         />
       </div>
     </div>

@@ -1,7 +1,7 @@
 "use client"
 import { useState , useEffect } from 'react'
 import { LucideShoppingBag } from 'lucide-react'
-import { useCartStore } from '@/store/useCartStore';
+import { useCart } from '@/hooks/cart/useCart';
 import { CartItem, Product } from "@/app/generated/prisma";
 import Link from 'next/link';
 import "./carticon.css"
@@ -18,10 +18,9 @@ type CartResponse = {
 
 
 export  const CartIcon = ({user}: CartResponse) => {
- const items = useCartStore((state) => state.items);
-  const loadCart = useCartStore((state) => state.loadCart);
-const totalQuantity = useCartStore((state) => state.getTotalQuantity()) || "...";
-
+  const {cart } = useCart()
+const totalQuantity = cart?.totalQuantity ?? 0;
+console.log(cart)
 //get user if not login not load cart qty 
 
  const [isAnimate, setIsAnimate] = useState(false);
@@ -29,10 +28,7 @@ const totalQuantity = useCartStore((state) => state.getTotalQuantity()) || "..."
         isAnimate ? `pumpCartQuantity` : ""
       }`;
   useEffect(() => {
-    if( user ){
-       loadCart(); 
-       
-    }
+   
      
      if (!totalQuantity) {
           return;
@@ -43,7 +39,7 @@ const totalQuantity = useCartStore((state) => state.getTotalQuantity()) || "..."
           setIsAnimate(false);
         }, 300);
        return () => clearTimeout(debounce);
-  }, [totalQuantity  , user , loadCart]);
+  }, [totalQuantity  , user]);
 
      
     

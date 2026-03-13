@@ -37,6 +37,7 @@ export const AdminSidebar = ({ isOpen, setIsOpen }: AdminSidebarProps) => {
           <SidebarLink href="/admin/dashboard" icon={<LayoutDashboard size={20}/>} label="Dashboard" onClick={handleClose} />
           <SidebarLink href="/admin/AddProductPage" icon={<ShoppingBag size={20}/>} label="Products" onClick={handleClose} />
           <SidebarLink href="/admin/add-category" icon={<ListTree size={20}/>} label="Categories" onClick={handleClose} />
+          <SidebarLink href="/trending" icon={<ShoppingBag size={20}/>} label="ProductsViews" onClick={handleClose} />
         </nav>
 
         <div className="p-4 border-t border-white/10">

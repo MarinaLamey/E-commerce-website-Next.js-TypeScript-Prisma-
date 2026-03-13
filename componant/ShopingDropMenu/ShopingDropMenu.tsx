@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useProductStore } from "@/store/useProductStore";
 import { useCategoriesStore } from "@/store/useCategoriesStore";
+import { useFilterStore } from "@/store/useFilterStore";
 import { Product } from "@/app/generated/prisma";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 interface ShopDropMenu {
@@ -16,6 +17,7 @@ export default function ShopDropMenu({productList , currentPageKey}:ShopDropMenu
   const [isOpen, setIsOpen] = useState(false);
   const sortProduct = useProductStore((state) => state.sortProduct);
   const sortCategoryProduct = useCategoriesStore((state) => state.sortCategoryProduct)
+  const { sortKey, setSortKey } = useFilterStore();
   
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -34,28 +36,29 @@ export default function ShopDropMenu({productList , currentPageKey}:ShopDropMenu
   //
   
   //
-  const sortFromLowTohight = async(type : string) => {
+  const sortFromLowTohight = async(type :  "asc" | "desc") => {
+    setSortKey(type)
     const params = new URLSearchParams(searchParams.toString());
-  if (type === "asc"){
+//   if (type === "asc"){
     
-  await  sortProduct(productList, currentPageKey , type);
-  await sortCategoryProduct(productList, currentPageKey , type)
- if (currentPageKey === "search") {
-      params.set("sort", type);
-      params.set("pageNumber", "1"); // ارجعي لصفحة 1 دايماً عند الترتيب
-      router.push(`${pathname}?${params.toString()}`);
-    }
-  }else{
+//   await  sortProduct(productList, currentPageKey , type);
+//   await sortCategoryProduct(productList, currentPageKey , type)
+//  if (currentPageKey === "search") {
+//       params.set("sort", type);
+//       params.set("pageNumber", "1"); //
+//       router.push(`${pathname}?${params.toString()}`);
+//     }
+//   }else{
 
-    await  sortProduct(productList, currentPageKey , type);
-    await sortCategoryProduct(productList, currentPageKey , type)
-   if (currentPageKey === "search") {
-      params.set("sort", type);
-      params.set("pageNumber", "1"); // ارجعي لصفحة 1 دايماً عند الترتيب
-      router.push(`${pathname}?${params.toString()}`);
-    }
-  }
-   ;
+//     await  sortProduct(productList, currentPageKey , type);
+//     await sortCategoryProduct(productList, currentPageKey , type)
+//    if (currentPageKey === "search") {
+//       params.set("sort", type);
+//       params.set("pageNumber", "1"); // ارجعي لصفحة 1 دايماً عند الترتيب
+//       router.push(`${pathname}?${params.toString()}`);
+//     }
+//   }
+//    ;
     
     setIsOpen(false);
   }
