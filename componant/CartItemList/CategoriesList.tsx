@@ -25,7 +25,7 @@ const rightToLeftVariants : Variants = {
 
 export const CategoriesList = memo(({ pageNumber  , data }: CategoryListType) => {
   
-  const pages = Math.ceil( data?.categoriesCount || 0 / CATEGORY_PER_PAGE);
+  const pages = Math.ceil( (data?.categoriesCount || 0) / CATEGORY_PER_PAGE);
 
   return (
     <div className='w-full flex flex-col items-center justify-between gap-3'>
