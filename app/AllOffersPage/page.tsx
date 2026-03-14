@@ -22,7 +22,7 @@ async function AllOffersPage ({ searchParams }:PageProps ) {
          className=" w-full min-h-screen    relative  mx-auto mb-5 "
         
        >
-         <OffersProductClient userFName={userData?.firstName} UserId={Number(userData?.id)} initialData={initialData} pageNumber={Number(pageNumber)} route={"/AllOffersPage"} />
+         {/* <OffersProductClient userFName={userData?.firstName} UserId={Number(userData?.id)} initialData={initialData} pageNumber={Number(pageNumber)} route={"/AllOffersPage"} /> */}
        </div>
   )
 }
