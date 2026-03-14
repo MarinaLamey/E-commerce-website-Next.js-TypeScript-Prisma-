@@ -33,7 +33,7 @@ const offerVariants: Variants = {
 
 export const OffersList =({ userId, pageNumber, route , data }: OffersProps) => {
     
-    const pages = Math.ceil(data.productOffersCount / PRODUCT_PER_PAGE);
+    const pages = Math.ceil(data?.productOffersCount / PRODUCT_PER_PAGE);
     
 
     return (
@@ -42,8 +42,8 @@ export const OffersList =({ userId, pageNumber, route , data }: OffersProps) => 
            
             <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 xl:grid-cols-4 gap-x-3 gap-y-8 md:gap-x-6 md:gap-y-12'>
                 <AnimatePresence mode="wait">
-                    {data.products.length > 0 ? (
-                        data.products.map((product, index) => (
+                    {data?.products?.length > 0 ? (
+                        data?.products?.map((product, index) => (
                             <motion.div
                                 key={`${pageNumber}-${product.id}`}
                                 variants={offerVariants}
@@ -69,7 +69,7 @@ export const OffersList =({ userId, pageNumber, route , data }: OffersProps) => 
             </div>
 
             {/* Empty State Section */}
-            {data.products.length === 0 && (
+            {data?.products?.length === 0 && (
                 <div className="w-full py-20 flex flex-col items-center justify-center">
                     <LottieHandler 
                         type={'Empty'} 

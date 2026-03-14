@@ -53,7 +53,7 @@ export const getBestellerProduct =  async (pageNumber: number | undefined,  sort
 
 export const getOffersProduct = async (pageNumber: number | undefined, categoryId: number | undefined , sortKey: string = "default") : Promise<OffersResponse> => {
         const currentPage = Math.max(1, Number(pageNumber) || 1);
-        const cacheKey = `products:offers:page:${currentPage}:sort:${sortKey}`;
+        const cacheKey = `products:offers:categoryId:${categoryId}:page:${currentPage}:sort:${sortKey}`;
         ///Sort by price
          let orderBy: any = { createdAt: 'desc' }; 
     if (sortKey === "asc") orderBy = { price: 'asc' };
@@ -64,14 +64,14 @@ export const getOffersProduct = async (pageNumber: number | undefined, categoryI
         if (cached) return cached;
         // hydration stop func
         //ifRedis empty ask prisma
-                const currentCategory = categoryId ? Number(categoryId) : undefined;
+                const currentCategory =  Number(categoryId) || undefined;
                 const skip = PRODUCT_PER_PAGE * (currentPage - 1);
 
                 const [products, productOffersCount] = await Promise.all([
                     prisma.product.findMany({
                         where: {
-                            ...(currentCategory && { categoryId: currentCategory }),
-                            isOffer: true
+                        categoryId:currentCategory,
+                        isOffer:true
                         },
                         skip: skip,
                         take: PRODUCT_PER_PAGE,

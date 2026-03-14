@@ -11,10 +11,13 @@ interface OffersClientProp{
   initialData:any;
   pageNumber:number;
   route:string;
-  category?:number;
+  category:number | undefined ;
 }
 export const OffersProductClient = ({userFName , UserId  , initialData , category ,pageNumber ,  route }:OffersClientProp) => {
-const {data} = useOffersById(initialData ,category || 0, pageNumber )
+
+  const categoryId = category || 0;
+
+  const {data} = useOffersById(initialData , categoryId  , pageNumber );
  
   return (
        <div className="w-full relative flex justify-center items-center flex-col mt-8">

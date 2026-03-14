@@ -16,13 +16,10 @@ async function Offers  ({ searchParams }:PageProps ) {
 
    
   const initialData = await getOffersProduct(Number(pageNumber) , Number(category));
-
+console.log(initialData)
   return (
    <div
-         className=" w-full min-h-screen    relative  mx-auto mb-5 "
-        
-       >
-        
+         className=" w-full min-h-screen    relative  mx-auto mb-5 ">
          <OffersProductClient userFName={userData?.firstName} UserId={Number(userData?.id)} initialData={initialData} category={Number(category)} pageNumber={Number(pageNumber)} route={"/Offers"} />
        </div>
   )
