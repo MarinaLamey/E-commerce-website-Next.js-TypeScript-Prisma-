@@ -18,7 +18,7 @@ model User {
   firstName       String    @db.VarChar(50)
   email           String    @unique
   lastName        String    @db.VarChar(50)
-  password        String
+  password        String?
   confirmPassword String?
   phone           String?   @db.VarChar(20)
   isAdmin         Boolean?  @default(false)

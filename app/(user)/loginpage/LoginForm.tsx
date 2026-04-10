@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import axios from 'axios';
 import Spinner from '@/componant/Spinner/Spinner';
 import Link from 'next/link';
-
+import GoogleLogin from '@/componant/auth/GoogleLogin';
 function LoginForm() {
     const router = useRouter();
     const [email, setEmail] = useState("");
@@ -37,7 +37,6 @@ function LoginForm() {
                 <p className='text-neutral-400 text-xl'>Welcome to N-NegmCartilla</p>
             </div>
 
-            {/* تم تكبير الـ padding والـ font والـ rounded */}
             <input 
                 className="w-full max-w-md border-2 border-gray-200 rounded-2xl p-5 text-2xl outline-none focus:border-[#771011] transition-all shadow-sm" 
                 type="email" 
@@ -61,7 +60,6 @@ function LoginForm() {
             >
                 {loading ? <Spinner /> : "Login"}
             </button>
-
             <Link href={"/registerpage"} className='font-bold flex gap-2 text-lg mt-4'>
                 <span className='text-gray-600'>Don't have an account?</span>
                 <span className='text-[#771011] hover:underline'>Sign in</span>

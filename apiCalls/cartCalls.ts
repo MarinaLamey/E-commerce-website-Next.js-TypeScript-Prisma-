@@ -19,7 +19,6 @@ export const getCartItems = async ({ signal }: { signal?: AbortSignal }): Promis
   return data;
 };
 
-// POST: (إضافة منتج جديد) أو (تعديل كمية موجودة)
 export const postToCartApi = async ({ 
   productId, 
   quantity, 
@@ -46,7 +45,7 @@ export const postToCartApi = async ({
   return data;
 };
 
-// DELETE: حذف منتج
+// DELETE: 
 export const deleteCartItemApi = async (id: number) => {
   const { data } = await axios.delete(`/api/cart/${id}`);
   return data;
@@ -54,5 +53,5 @@ export const deleteCartItemApi = async (id: number) => {
 
 export const getStockCheck = async (ids: string) => {
   const { data } = await axios.get(`/api/products/stock-check?ids=${ids}`);
-  return data; // المفروض يرجع Object { productId: stockCount }
+  return data; //Object { productId: stockCount }
 };

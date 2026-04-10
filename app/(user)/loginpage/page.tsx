@@ -1,5 +1,6 @@
 import "./loginpage.css"
 import LoginForm from "./LoginForm";
+import GoogleLogin from "@/componant/auth/GoogleLogin";
 import { MovieSection } from "@/componant/MovieSection/MovieSection";
 async function Page() {
   return (
@@ -9,6 +10,7 @@ async function Page() {
         <div className='w-full max-w-xl h-full flex flex-col items-center gap-6'>
           <h1 className="text-4xl font-bold text-gray-800 mb-2">Log In</h1>
           <LoginForm />
+          <GoogleLogin></GoogleLogin>
         </div>
       </div>
 
