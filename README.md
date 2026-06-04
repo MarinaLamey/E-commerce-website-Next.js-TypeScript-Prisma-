@@ -1,9 +1,9 @@
-🚀 N-NEGMCARTILLA | Enterprise-Grade E-Commerce Engine
+ N-NEGMCARTILLA | Enterprise-Grade E-Commerce Engine
 High-Performance | Scalable Architecture | Financial Precision
 This project is not merely a UI; it is a production-ready e-commerce engine engineered with a focus on data integrity, atomic transactions, and ultra-fast rendering. Built using the latest Next.js 15 (App Router) and PostgreSQL, it demonstrates a deep understanding of modern full-stack architecture.
 Live Demo :e-commerce-website-next-js-type-scr-rust.vercel.app
 ________________________________________
-🏗️ Technical Architecture & Engineering Excellence
+ Technical Architecture & Engineering Excellence
 1. Advanced Data Layer & Rendering Strategy
 •	Hybrid Data Fetching (ISR + Real-time): Leverages Incremental Static Regeneration (ISR) to achieve a 95+ Lighthouse score, combined with specialized client-side hydration to sync volatile data (e.g., Stock Levels) without sacrificing speed.
 •	Decoupled Service Architecture (DAL): Implemented a Data Access Layer that isolates business logic from the database. This "Database Agnostic" design allows swapping the underlying ORM or migrating to microservices with zero impact on the UI.
@@ -20,11 +20,11 @@ The entire codebase is built with TypeScript in strict mode, ensuring 100% type 
 •	Custom Type Guards & Interfaces: Implemented robust interfaces for API responses and Global State (Zustand), making the data flow predictable and easy to debug.
 •	Advanced Prop Typing: Every UI component uses strict prop definitions, preventing invalid data passing and improving the developer experience (DX) with precise Autocomplete.
 ________________________________________
-🧱 Architectural Patterns with TypeScript
+ Architectural Patterns with TypeScript
 •	Generic Service Wrappers: Used TypeScript Generics to create reusable database fetchers, ensuring that the return types of our unstable_cache functions are always accurate.
 •	Discriminated Unions: Employed for handling complex states like Order Status (pending | shipped | delivered) and User Roles, making the business logic bulletproof.
 
-🛡️ Robustness, Security & Data Integrity
+ Robustness, Security & Data Integrity
 1. Atomic Database Transactions
 •	Prisma Transactional Integrity: Guaranteed consistency across orders, stock deductions, and cart clearing using ACID-compliant transactions. No cart is cleared unless the order is successfully finalized.
 •	Master-Detail Order Pattern: Implemented a snapshot system in OrderItem. This ensures historical financial data remains accurate even if product prices are updated later.
@@ -32,20 +32,20 @@ ________________________________________
 •	Financial Accuracy: Applied rigorous rounding techniques to handle VAT (14%) and currency calculations, mitigating floating-point arithmetic errors.
 •	Secure Auth Flow: Robust JWT-based authentication using httpOnly cookies and Server-Side verification to safeguard sensitive endpoints against XSS and CSRF.
 ________________________________________
-⚡ Performance Optimization & Caching
+ Performance Optimization & Caching
 1. Granular Cache Control
 •	On-Demand Revalidation: Utilized revalidateTag with Dynamic Tags (e.g., category-${id}). When an Admin updates a product, only the relevant cached segments are purged, ensuring the site is always fresh but remains lightning-fast.
 •	Parallel Query Execution: Optimized server response times by ~50% using Promise.all() for concurrent database lookups (e.g., fetching products and total counts simultaneously).
 2. Scalable Global State
 •	Zustand with Selector Patterns: Reduced unnecessary component re-renders by 40% through granular state selection and strategic hydration of the client-side store.
 ________________________________________
-🌌 Cloud Database: Neon (PostgreSQL)
+ Cloud Database: Neon (PostgreSQL)
 The application leverages Neon Serverless Postgres for its data layer:
 •	Auto-Scaling Compute: Seamlessly handles traffic spikes.
 •	Data Branching: Enables isolated environments for feature testing.
 •	Relational Excellence: Strict schema enforcement with optimized VarChar limits and composite indexing (@@unique) for $O(\log n)$ lookup speeds.
 ________________________________________
-📂 Project Structure (Atomic Design)
+ Project Structure (Atomic Design)
 Plaintext
 ├── services/               # Data Access Layer (Service Layer Pattern)
 ├── app/                    # Next.js App Router (File-based Routing)
@@ -57,12 +57,12 @@ Plaintext
 ├── component/              # Atomic UI Components (Radix UI + Shadcn)
 └── prisma/                 # PostgreSQL Schema & Migrations
 ________________________________________
-🚀 Why This Project Stands Out
+Why This Project Stands Out
 It solves the three most critical challenges in e-commerce:
 1.	Data Consistency: Through Atomic Transactions.
 2.	Architectural Scalability: Through a Decoupled Service Layer.
 3.	Instant Performance: Through Advanced Caching and Rendering Optimization.
 ________________________________________
-👨‍💻 Developed by [Marina Lamey]
+ Developed by [Marina Lamey]
 Dedicated to Engineering Excellence and Scalable Full-Stack Architectures.
 
